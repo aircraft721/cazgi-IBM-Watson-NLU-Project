@@ -37,14 +37,14 @@
   }
 }
 
-.emotion-sad {
+.emotion-sad, .sentiment-negative {
     color: red;
 }
 
-.emotion-happy {
+.emotion-happy, .sentiment-positive {
     color: green;
 }
 
-.emotion-neutral {
-    color: yellow;
+.emotion-neutral, .sentiment-meh {
+    color: #FFDB58;
 }

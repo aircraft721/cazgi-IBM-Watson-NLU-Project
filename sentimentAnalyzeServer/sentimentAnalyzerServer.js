@@ -62,13 +62,24 @@ app.get("/text/emotion", async (req,res) => {
     };
 
     const emotionData = await getNLUInstance(analyzeParams);
-    // const emotionTableData = emotionData.result.emotion.document.emotion || {};
-    // console.log('emotionTableData', emotionTableData)
     return res.send(emotionData);
 });
 
-app.get("/text/sentiment", (req,res) => {
-    return res.send("text sentiment for "+req.query.text);
+app.get("/text/sentiment", async (req,res) => {
+    let dataArray = req.query.text.split(" ");
+
+    const analyzeParams = {
+        'text': req.query.text,
+        'features': {
+            'sentiment': {
+                'targets': dataArray
+            }
+        },
+        'language': 'en'
+    };
+
+    const sentiment = await getNLUInstance(analyzeParams);
+    return res.send(sentiment);
 });
 
 let server = app.listen(8080, () => {

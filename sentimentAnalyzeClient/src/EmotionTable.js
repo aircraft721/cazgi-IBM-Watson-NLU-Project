@@ -4,16 +4,6 @@ import './bootstrap.min.css';
 class EmotionTable extends React.Component {
     
     render() {
-        // let emotionClassName = 'emotion-';
-
-        // const { anger, disgust, fear, sadness } = this.props.emotions;
-
-        // if (anger || disgust || fear || sadness) {
-        //     emotionClassName += 'sad';
-        // } else {
-        //     emotionClassName += 'happy';
-        // }
-
       return (  
         <div>
           <table className="table table-bordered">
