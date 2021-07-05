@@ -2,15 +2,43 @@ import React from 'react';
 import './bootstrap.min.css';
 
 class EmotionTable extends React.Component {
+    
     render() {
+        // let emotionClassName = 'emotion-';
+
+        // const { anger, disgust, fear, sadness } = this.props.emotions;
+
+        // if (anger || disgust || fear || sadness) {
+        //     emotionClassName += 'sad';
+        // } else {
+        //     emotionClassName += 'happy';
+        // }
+
       return (  
         <div>
-          {/*You can remove this line and the line below. */}
-          {JSON.stringify(this.props.emotions)}
           <table className="table table-bordered">
             <tbody>
             {
-                //Write code to use the .map method that you worked on in the Hands-on React lab to extract the emotions
+                Object.entries(this.props.emotions).map(([key, value]) => {
+                    let classname = 'emotion-';
+                    switch (key) {
+                        case 'joy':
+                            classname += 'happy'
+                            break;
+                        case 'fear':
+                            classname += 'neutral'
+                            break;
+                        default:
+                            classname += 'sad'
+                            break;
+                    }
+                    return (
+                        <tr>
+                            <th className={classname} scope="row">{key}</th>
+                            <td>{value}</td>
+                        </tr>
+                    )
+                })
             }
             </tbody>
           </table>

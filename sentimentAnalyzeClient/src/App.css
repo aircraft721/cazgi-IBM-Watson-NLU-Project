@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.emotion-sad {
+    color: red;
+}
+
+.emotion-happy {
+    color: green;
+}
+
+.emotion-neutral {
+    color: yellow;
+}
