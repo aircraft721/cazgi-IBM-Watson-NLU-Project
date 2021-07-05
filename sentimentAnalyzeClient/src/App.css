@@ -48,3 +48,10 @@
 .emotion-neutral, .sentiment-meh {
     color: #FFDB58;
 }
+
+.confidence-wrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

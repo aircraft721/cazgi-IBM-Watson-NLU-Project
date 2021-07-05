@@ -30,8 +30,15 @@ class EmotionTable extends React.Component {
                     )
                 })
             }
+            
             </tbody>
           </table>
+          {this.props.confidence && (
+                <div className="confidence-wrapper">
+                    <div>Confidence</div>
+                    <div>{this.props.confidence}</div>
+                </div>
+            )}
           </div>
           );
         }

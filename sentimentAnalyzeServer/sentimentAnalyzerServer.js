@@ -38,14 +38,46 @@ app.get("/",(req,res)=>{
     res.render('index.html');
 });
 
-app.get("/url/emotion", (req,res) => {
-    // const emotionData = getNLUInstance();
-    // console.log('emotionData', emotionData);
-    // return res.send(emotionData);
+app.get("/url/emotion", async (req,res) => {
+    const analyzeParams = {
+         'url': req.query.url,
+            'features': {
+                'entities': {
+                'emotion': true,
+                'sentiment': false,
+                'limit': 1,
+                },
+                'keywords': {
+                'emotion': true,
+                'sentiment': false,
+                'limit': 1,
+                },
+            },
+    }
+
+    const emotionData = await getNLUInstance(analyzeParams);
+    return res.send(emotionData);
 });
 
-app.get("/url/sentiment", (req,res) => {
-    return res.send("url sentiment for "+req.query.url);
+app.get("/url/sentiment", async (req,res) => {
+        const analyzeParams = {
+         'url': req.query.url,
+            'features': {
+                'entities': {
+                'emotion': false,
+                'sentiment': true,
+                'limit': 1,
+                },
+                'keywords': {
+                'emotion': false,
+                'sentiment': true,
+                'limit': 1,
+                },
+            },
+    }
+
+    const sentimentData = await getNLUInstance(analyzeParams);
+    return res.send(sentimentData);
 });
 
 app.get("/text/emotion", async (req,res) => {
